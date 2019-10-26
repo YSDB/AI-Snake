@@ -236,23 +236,25 @@ playsurface.fill(blackcolor)
 
 
 
-pygame.draw.rect(playsurface,redcolor,Rect(20*(food//Width),20*(food%Width),20,20))
+#pygame.draw.rect(playsurface,redcolor,Rect(20*(food//Width),20*(food%Width),20,20))
 
 while True:
     for event in pygame.event.get():
-        if event == QUIT:
+        if event.type == QUIT:
             print(score)
             pygame.quit()
             sys.exit()
-        elif event == KEYDOWN:
+        elif event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 print(score)
                 pygame.quit()
                 sys.exit()
+                
     pygame.display.flip()
+    playsurface.fill(blackcolor)
+    pygame.draw.rect(playsurface,redcolor,Rect(20*(food//Width),20*(food%Width),20,20))
     pygame.draw.rect(playsurface,bluecolor,Rect(0,0,500,500),40)
-       
-            
+               
     distance_reset(snake,snake_size,board)
     #print(666)
     
@@ -274,4 +276,5 @@ while True:
     else:
         print(score)
         sys.exit()
-    playtime.tick(1)
+
+    playtime.tick(30)
